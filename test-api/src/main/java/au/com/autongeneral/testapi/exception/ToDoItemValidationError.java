@@ -7,20 +7,22 @@ public class ToDoItemValidationError extends RuntimeException {
 	 */
 	private static final long serialVersionUID = -7724936773477983384L;
 
-	private String paramName;
+	private String message;
 	
-	public ToDoItemValidationError(String paramName) {
-		super(paramName);
-		this.paramName = paramName;
+	public ToDoItemValidationError(String message) {
+		super(message);
+		this.message = message;
 	}
 
-	public String getParamName() {
-		return paramName;
+	public String getMessage() {
+		return message;
 	}
 
-	public void setParamName(String paramName) {
-		this.paramName = paramName;
+	public void setMessage(String message) {
+		this.message = message;
 	}
+
+	
 	
 	
 }

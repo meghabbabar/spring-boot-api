@@ -2,6 +2,7 @@ package au.com.autongeneral.testapi.validator;
 
 import org.springframework.stereotype.Component;
 
+import au.com.autongeneral.testapi.exception.BracketInputVaidationError;
 import au.com.autongeneral.testapi.exception.ToDoItemValidationError;
 import au.com.autongeneral.testapi.model.ToDoItemAddRequest;
 import au.com.autongeneral.testapi.model.ToDoItemUpdateRequest;
@@ -29,7 +30,7 @@ public class InputValidator {
 			throw new ToDoItemValidationError("Input string is required");
 		}
 		if(input.length() > 50) {
-			throw new ToDoItemValidationError("Must be between 1 and 50 chars long");
+			throw new BracketInputVaidationError("text", "Must be between 1 and 50 chars long");
 		}
 	}
 

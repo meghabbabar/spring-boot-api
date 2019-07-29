@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import au.com.autongeneral.testapi.exception.BracketInputVaidationError;
 import au.com.autongeneral.testapi.exception.ToDoItemNotFoundError;
 import au.com.autongeneral.testapi.exception.ToDoItemValidationError;
 import au.com.autongeneral.testapi.model.Details;
@@ -27,6 +28,14 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 	@ExceptionHandler(ToDoItemValidationError.class)
 	public final ResponseEntity<ExceptionResponse> handleBadRequest(ToDoItemValidationError ex, WebRequest request) {
 		ExceptionResponse exceptionResponse = new ExceptionResponse("ValidationError", new Details(ex.getMessage()));
+		return new ResponseEntity<ExceptionResponse>(exceptionResponse, HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler(BracketInputVaidationError.class)
+	public final ResponseEntity<ExceptionResponse> handleBadRequest(BracketInputVaidationError ex, WebRequest request) {
+		Details details = new Details("param", ex.getParamName(), "", ex.getMessage());
+		ExceptionResponse exceptionResponse = new ExceptionResponse("VaidationError");
+		exceptionResponse.addErrorDetails(details);
 		return new ResponseEntity<ExceptionResponse>(exceptionResponse, HttpStatus.BAD_REQUEST);
 	}
 }
