@@ -1,0 +1,1 @@
+insert into TODO(todo_Id, text, is_Completed, created_At) values(1000, 'first task',false, '2017-10-13');
