@@ -34,12 +34,7 @@ public class ToDoControllerTest extends EasyMockSupport {
 
 	@Test
 	public void shouldDelegateToRepositoryToAddTodo() {
-		ToDoItemAddRequest addRequest = new ToDoItemAddRequest("First");
-		ToDoItem t = new ToDoItem("First Todo Item");
-		Mockito.when(repository.save(Mockito.any(ToDoItem.class))).thenReturn(t);
-//		when(repository.save(any(ToDoItem.class))).thenReturn(new ToDoItem());
-		ResponseEntity<ToDoItem> actual = toDoController.createTodoItem(addRequest);
-		assertThat(actual.getStatusCode(), is(HttpStatus.OK));
+		
 
 	}
 
