@@ -49,6 +49,7 @@ public class ToDoController {
 	@GetMapping("/todo/{id}")
 	public ResponseEntity<ToDoItem> retriveToDoTask(@PathVariable Long id) throws ToDoItemNotFoundError {
 
+		inputValidator.validateInputId(id);
 		Optional<ToDoItem> todoTask = todoRpository.findById(id);
 
 		if (!todoTask.isPresent()) {

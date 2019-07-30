@@ -34,4 +34,10 @@ public class InputValidator {
 		}
 	}
 
+	public void validateInputId(Long id) {
+		if(id == null) {
+			throw new ToDoItemValidationError("Input string is required");
+		}
+	}
+
 }
